@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+<title>Izen-ematea</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="shortcut icon" href="https://31.media.tumblr.com/avatar_ee818b5d7be1_128.png">
+<script type="text/javascript">
+function ikusBalioak(){
+var sAux="";
+var frm=document.getElementById("erregistro");
+for(i=1;i<frm.elements.length;i++){
+sAux += "IZENA: " + frm.elements[i].name+"";
+sAux += "BALIOA: " + frm.elements[i].value+"\n";
+}
+alert(sAux)
+}
+</script>
+</head>
+
+<body>
+<div id="header">
+<h2>
+<a href="Signup.html"><span>Izen-ematea </span></a><a href="Credits.html"><span> Kredituak</span></a>
+</h2>
+
+</div>
+
+
+
+<div id="page">
+<h1>Izen-ematea</h1>
+<form id="erregistro" name="erregistro" onsubmit="ikusBalioak()">
+<p><strong>Bete itzazu honako hutsuneak izena emateko.</strong></p>
+<p><strong>Izen-abizenak </strong>
+<input type="text" name="name" />
+</p>
+
+<p><strong>Eposta </strong>
+<input type="text" name="email" />
+</p>
+
+
+<p><strong>Pasahitza </strong>
+<input type="password" name="password" />
+</p>
+
+<p><strong>Telefono zenbakia </strong>
+<input type="text" name="phone" />
+</p>
+
+<p><strong>Espezialitatea </strong><br />
+<input type="radio" name="espezialitatea" value="Software ingeniaritza" checked="checked" /> Software ingeniaritza
+<input type="radio" name="espezialitatea" value="Konputazioa" /> Konputazioa
+<input type="radio" name="espezialitatea" value="Konputagailuen ingeniaritza" /> Konputagailuen ingeniaritza
+</p>
+
+<p><strong>Interesak</strong> <br />
+<input type="checkbox" name="interes" value="HTML eta CSS" /> HTML eta CSS <br />
+<input type="checkbox" name="interes" value="JavaScript" /> JavaScript <br />
+<input type="checkbox" name="interes" value="Flash" /> Flash<br />
+<input type="checkbox" name="interes" value="C++" /> C++<br />
+<input type="checkbox" name="interes" value="Ada" /> Ada<br />
+<input type="checkbox" name="interes" value="Java" /> Java<br />
+
+</p>
+
+<input type="submit" name="submit" value="Bidali" />
+
+</form>
+
+</div>
+</body>

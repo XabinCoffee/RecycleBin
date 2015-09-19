@@ -1,0 +1,42 @@
+#page {
+	text-align: center;
+	margin-top: 100px;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+a:link {
+	text-decoration: none;
+	color: black;
+}
+
+a:visited {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-shadow: 2px 2px 3px #266d85;
+}
+
+a {
+	padding: 25px;
+
+}
+
+body {
+    background-color: #A4D9EB;
+	cursor: url('http://www.rw-designer.com/cursor-view/41356.png'), default;
+}
+#header {
+	font-size: 120%;
+	font-family: Verdana, Geneva, sans-serif;
+	text-align: center;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	margin: 0px;
+	padding: 5px;
+	width: 100%;
+	background-color: rgba(31,142,239,0.8);
+	z-index: 10;
+	}
