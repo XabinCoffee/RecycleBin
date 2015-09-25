@@ -13,13 +13,66 @@ sAux += "BALIOA: " + frm.elements[i].value+"\n";
 }
 alert(sAux)
 }
+
+</script>
+
+<script type="text/javascript">
+
+function konprobazioa(){
+var inprimakia="";
+var frm=document.getElementById("erregistro");
+
+if (frm.elements[0].value === ""){ 
+	inprimakia += "Izen-abizenak eremua hutsik dago. \n";
+}
+
+var pasahitza =frm.elements[2].value.length;
+if (pasahitza==0){
+	inprimakia += "Pasahitza hutsa dago \n";
+	}
+	else if (pasahitza<6){
+		inprimakia += "Pasahitza laburregia da \n";
+	}
+	
+
+	FullAdEr = new RegExp(/^[a-z]+[0-9]{3}@ikasle.ehu.e(us|s)$/);
+	var email = frm.elements[1].value;
+	
+if (FullAdEr.test(email)){	
+}
+else{
+inprimakia += "Email okerra\n";
+}
+ 
+	FullAdEr2 = new RegExp(/^[6-9][0-9]{8}$/);
+	var telef = frm.elements[3].value;
+	
+if (FullAdEr2.test(telef)){
+	}
+	
+	else{
+	inprimakia += "Telefono zenbaki okerra \n";
+	}
+
+ 
+ if (inprimakia === ""){
+	ikusBalioak()
+ }
+	else{
+ 
+	alert(inprimakia);
+	}
+
+}
+
+
 </script>
 </head>
 
 <body>
 <div id="header">
 <h2>
-<a href="Signup.html"><span>Izen-ematea </span></a><a href="Credits.html"><span> Kredituak</span></a>
+<a href="layout.html"> Aurkibidea </a><a href="Signup.html"> Izen-ematea </a><a href="Credits.html"> Kredituak </a>
 </h2>
 
 </div>
@@ -28,29 +81,30 @@ alert(sAux)
 
 <div id="page">
 <h1>Izen-ematea</h1>
-<form id="erregistro" name="erregistro" onsubmit="ikusBalioak()">
+<form id="erregistro" name="erregistro" onsubmit="konprobazioa()">
 <p><strong>Bete itzazu honako hutsuneak izena emateko.</strong></p>
 <p><strong>Izen-abizenak </strong>
-<input type="text" name="name" />
+<input type="text" name="name" requiered />
 </p>
 
 <p><strong>Eposta </strong>
-<input type="text" name="email" />
+<input type="text" name="email" requiered />
 </p>
 
 
 <p><strong>Pasahitza </strong>
-<input type="password" name="password" />
+<input type="password" name="password" requiered />
 </p>
 
 <p><strong>Telefono zenbakia </strong>
-<input type="text" name="phone" />
+<input type="text" name="phone" requiered/>
 </p>
 
 <p><strong>Espezialitatea </strong><br />
 <input type="radio" name="espezialitatea" value="Software ingeniaritza" checked="checked" /> Software ingeniaritza
 <input type="radio" name="espezialitatea" value="Konputazioa" /> Konputazioa
 <input type="radio" name="espezialitatea" value="Konputagailuen ingeniaritza" /> Konputagailuen ingeniaritza
+<input type="radio" name="espezialitatea" value="Sistema informatikoak" /> Sistema informatikoak
 </p>
 
 <p><strong>Interesak</strong> <br />
