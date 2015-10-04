@@ -81,7 +81,7 @@ if (FullAdEr2.test(telef)){
 
 <div id="page">
 <h1>Izen-ematea</h1>
-<form id="erregistro" name="erregistro" onsubmit="konprobazioa()">
+<form id="erregistro" name="erregistro" onsubmit="konprobazioa()" action="Erregistratu.php" method="POST">
 <p><strong>Bete itzazu honako hutsuneak izena emateko.</strong></p>
 <p><strong>Izen-abizenak </strong>
 <input type="text" name="name" requiered />
@@ -104,16 +104,24 @@ if (FullAdEr2.test(telef)){
 <input type="radio" name="espezialitatea" value="Software ingeniaritza" checked="checked" /> Software ingeniaritza
 <input type="radio" name="espezialitatea" value="Konputazioa" /> Konputazioa
 <input type="radio" name="espezialitatea" value="Konputagailuen ingeniaritza" /> Konputagailuen ingeniaritza
-<input type="radio" name="espezialitatea" value="Sistema informatikoak" /> Sistema informatikoak
+<input type="radio" name="espezialitatea" value="Bestelakoak" /> Bestelakoak
 </p>
 
 <p><strong>Interesak</strong> <br />
+<textarea name="interests" cols="20" rows="5">
+
+</textarea>
+
+
+
+<!--
 <input type="checkbox" name="interes" value="HTML eta CSS" /> HTML eta CSS <br />
 <input type="checkbox" name="interes" value="JavaScript" /> JavaScript <br />
 <input type="checkbox" name="interes" value="Flash" /> Flash<br />
 <input type="checkbox" name="interes" value="C++" /> C++<br />
 <input type="checkbox" name="interes" value="Ada" /> Ada<br />
 <input type="checkbox" name="interes" value="Java" /> Java<br />
+-->
 
 </p>
 
