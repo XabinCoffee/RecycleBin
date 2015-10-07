@@ -56,14 +56,21 @@ if (FullAdEr2.test(telef)){
 
  
  if (inprimakia === ""){
-	ikusBalioak()
+	return true;
  }
 	else{
  
 	alert(inprimakia);
+	return false;
 	}
 
 }
+
+var loadFile = function(event) {
+	var output = document.getElementById('preview');
+	output.src = URL.createObjectURL(event.target.files[0]);
+	output.style.paddingBottom="10px";
+};
 
 
 </script>
@@ -81,7 +88,7 @@ if (FullAdEr2.test(telef)){
 
 <div id="page">
 <h1>Izen-ematea</h1>
-<form id="erregistro" name="erregistro" onsubmit="konprobazioa()" action="Erregistratu.php" method="POST">
+<form id="erregistro" name="erregistro" onsubmit="return konprobazioa()" action="Erregistratu.php" method="POST">
 <p><strong>Bete itzazu honako hutsuneak izena emateko.</strong></p>
 <p><strong>Izen-abizenak </strong>
 <input type="text" name="name" requiered />
@@ -101,10 +108,30 @@ if (FullAdEr2.test(telef)){
 </p>
 
 <p><strong>Espezialitatea </strong><br />
-<input type="radio" name="espezialitatea" value="Software ingeniaritza" checked="checked" /> Software ingeniaritza
-<input type="radio" name="espezialitatea" value="Konputazioa" /> Konputazioa
-<input type="radio" name="espezialitatea" value="Konputagailuen ingeniaritza" /> Konputagailuen ingeniaritza
-<input type="radio" name="espezialitatea" value="Bestelakoak" /> Bestelakoak
+<select id="espezialitatea" name="Espezialitatea" onchange="testuKaxa()">
+			<option selected="selected" value="SoftwareIngeniaritza">Software Ingeniaritza</option>
+			<option value="Konputazioa">Konputazioa</option>
+			<option value="KonputagailuIngeniaritza">Konputagailu Ingeniaritza</option>
+			<option value="Besterik">Besterik:</option>
+		</select>
+		<div id="container"></div>
+		<script>
+			function testuKaxa() {
+				var container = document.getElementById("container");
+				while (container.hasChildNodes()) {
+					container.removeChild(container.lastChild);
+				}
+				if (document.getElementById("espezialitatea").selectedIndex==3) {
+					<!-- container.appendChild(document.createTextNode("Besterik: ")); -->
+					var input = document.createElement("input");
+					input.id = "dinamikoa";
+					input.type = "text";
+					input.name = "Espezialitatea";
+					container.appendChild(input);
+					container.appendChild(document.createElement("br"));
+				}
+			}
+		</script>
 </p>
 
 <p><strong>Interesak</strong> <br />
@@ -112,7 +139,10 @@ if (FullAdEr2.test(telef)){
 
 </textarea>
 
-
+<p>
+<input name="image" id ="imgUpload"type="file" accept="image/*" onchange="loadFile(event)"><br><br>
+<img id="preview"/><br>
+</p>
 
 <!--
 <input type="checkbox" name="interes" value="HTML eta CSS" /> HTML eta CSS <br />
