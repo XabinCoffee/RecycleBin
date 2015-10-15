@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+<title>Log in</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="shortcut icon" href="https://31.media.tumblr.com/avatar_ee818b5d7be1_128.png">
+
+<script type="text/javascript">
+
+function konprobazioa(){
+var inprimakia="";	
+var frm=document.getElementById("erregistro");
+
+var email = frm.elements[0].value;
+
+if (email === ""){ 
+	inprimakia += "Eposta eremua hutsik dago. \n";
+}
+
+var pasahitza =frm.elements[1].value.length;
+if (pasahitza==0){
+	inprimakia += "Pasahitza hutsa dago \n";
+	}
+	
+
+ 
+ if (inprimakia === ""){
+	return true;
+ }
+	else{
+ 
+	alert(inprimakia);
+	return false;
+	}
+
+}
+
+</script>
+</head>
+
+<body>
+<div id="header">
+<h2>
+<a href="layout.html"> Aurkibidea </a><a href="Signup.html"> Izen-ematea </a><a href="Credits.html"> Kredituak </a> <a href="Login.html"> Log in </a>
+</h2>
+
+</div>
+
+
+
+<div id="page">
+<h1>Log in</h1>
+<form id="erregistro" name="erregistro" onsubmit="return konprobazioa()" action="Login.php" method="POST">
+<p><strong>Bete itzazu honako hutsuneak log in egin ahal izateko.</strong></p>
+
+<p><strong>Eposta </strong>
+<input type="text" name="email" />
+</p>
+
+<p><strong>Pasahitza </strong>
+<input type="password" name="password"/>
+</p>
+
+<input type="submit" name="submit" value="Hasi saioa" />
+
+</form>
+
+</div>
+</body>
