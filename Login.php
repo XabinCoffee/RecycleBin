@@ -10,49 +10,54 @@ mysql_select_db("u966022868_xabin",$con);
 
  
 <?php
- 
-//if(isset($_SESSION["session_username"])){
-// echo "Session is set"; // for testing purposes
-//header("Location: layout.html");
-//}
+if(isset($_SESSION["session_username"])){
+echo "Session is set"; // for testing purposes
+header("Location: illuminati.html");
+}
  
 if(isset($_POST["login"])){
  
-if(!empty($_POST['username']) && !empty($_POST['password'])) {
+if(!empty($_POST['username']) && !empty($_POST['password'])){
+	
  $username=$_POST['username'];
  $password=$_POST['password'];
  
 $query =mysql_query("SELECT * FROM erabiltzaile WHERE Eposta='".$username."' AND Pasahitza='".$password."'");
  
 $numrows=mysql_num_rows($query);
- if($numrows!=0)
- 
-{
- while($row=mysql_fetch_assoc($query))
- {
+ if($numrows!=0){
+	 
+ while($row=mysql_fetch_assoc($query)){
+	 
  $dbusername=$row['Eposta'];
  $dbpassword=$row['Pasahitza'];
+ 
  }
  
-if($username == $dbusername && $password == $dbpassword)
- 
-{
+if($username == $dbusername && $password == $dbpassword){
  
  $_SESSION['session_username']=$username;
  
-/* Redirect browser */
+/* Redirekzionatzeko logina egin ondoren */
  header("Location: illuminati.html");
  }
  } else {
- 
-$message = "Eposta / Pasahitz okerra!";
+	if (filter_var($username, FILTER_VALIDATE_EMAIL) === false){
+		$message = "Eposta helbide okerra!";
+	}
+	else{
+		$message = "Eposta / Pasahitz okerra!";
+	}
  }
  
 } else {
- $message = "Gelaxka guztiak bete!";
+	$message = "Gelaxka guztiak bete!";
+	
 }
 }
 ?>
+
+<title>Hasi saioa</title>
 
  <link rel="stylesheet" type="text/css" href="login.css">
  <div class="container mlogin">
