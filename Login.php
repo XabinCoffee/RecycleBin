@@ -10,10 +10,10 @@ mysql_select_db("u966022868_xabin",$con);
 
  
 <?php
-if(isset($_SESSION["session_username"])){
-echo "Session is set"; // for testing purposes
-header("Location: illuminati.html");
-}
+//if(isset($_SESSION["session_username"])){
+//echo "Session is set"; // for testing purposes
+//header("Location: insertQuestion.php");
+//}
  
 if(isset($_POST["login"])){
  
@@ -39,7 +39,10 @@ if($username == $dbusername && $password == $dbpassword){
  $_SESSION['session_username']=$username;
  
 /* Redirekzionatzeko logina egin ondoren */
- header("Location: illuminati.html");
+
+$var = $_POST['username'];
+
+ header("Location: insertquestion.php?username=$var");
  }
  } else {
 	if (filter_var($username, FILTER_VALIDATE_EMAIL) === false){
@@ -70,10 +73,10 @@ if($username == $dbusername && $password == $dbpassword){
  </p>
  <p>
  <label for="user_pass">Pasahitza:<br />
- <input type="password" name="password" id="password" class="input" value="" size="20" /></label>
+ <input type="password" name="password" class="input" value="" size="20" /></label>
  </p>
  <p class="submit">
- <input type="submit" name="login" class="button" value="Hasi Saioa" />
+ <input type="submit" name="login" class="button" value="Hasi Saioa"  />
  </p>
  <p class="regtext">Konturik ez? <a href="Signup.html" >Erregistratu hemen!</a></p>
 </form>
