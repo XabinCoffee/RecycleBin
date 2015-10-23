@@ -42,7 +42,7 @@ if($username == $dbusername && $password == $dbpassword){
 
 $var = $_POST['username'];
 
- header("Location: insertquestion.php?username=$var");
+ header("Location: InsertQuestion.php");
  }
  } else {
 	if (filter_var($username, FILTER_VALIDATE_EMAIL) === false){

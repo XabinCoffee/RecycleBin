@@ -9,7 +9,7 @@ mysql_select_db("u966022868_xabin",$con);
  
 if(!empty($_POST['question']) && !empty($_POST['answer'])){
 	
- $posta = $_REQUEST['username'];
+ $posta = $_SESSION['session_username'];
  $galdera = $_POST['question'];
  $erantzuna = $_POST['answer'];
  
@@ -28,10 +28,12 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
 	 
 	 $sql = "INSERT INTO galdera (galdera, erantzuna, zailtasuna, posta) VALUES ('$galdera','$erantzuna','$zailtasuna', '$posta'	)";  
 	 
+	 
 		if (!mysql_query($sql))
 		{
 			die("Errorea: ".mysql_error());
 		}
+		$message = "Galdera arazorik gabe gorde da.";
 	}
 	}
 	else{
@@ -40,6 +42,7 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
 		{
 			die("Errorea: ".mysql_error());
 		}
+		$message = "Galdera arazorik gabe gorde da.";
 	}
 
  }
