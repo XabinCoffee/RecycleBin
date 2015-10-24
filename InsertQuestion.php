@@ -1,10 +1,10 @@
 <?php
 session_start();
-$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
-mysql_select_db("u966022868_xabin",$con);
+//$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
+//mysql_select_db("u966022868_xabin",$con);
 
-//$con = mysql_connect("localhost","root","") or die($con);
-//mysql_select_db("quiz",$con); 
+$con = mysql_connect("localhost","root","") or die($con);
+mysql_select_db("quiz",$con); 
 
  
 if(!empty($_POST['question']) && !empty($_POST['answer'])){
@@ -26,7 +26,18 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
 	 
 	 $zailtasuna = $_POST['difficulty'];
 	 
-	 $sql = "INSERT INTO galdera (galdera, erantzuna, zailtasuna, posta) VALUES ('$galdera','$erantzuna','$zailtasuna', '$posta'	)";  
+	 $sql = "INSERT INTO galdera (galdera, erantzuna, zailtasuna, posta) VALUES ('$galdera','$erantzuna','$zailtasuna', '$posta'	)"; 
+	 
+	 
+		if (!mysql_query($sql))
+		{
+			die("Errorea: ".mysql_error());
+		}
+	$id = 1;
+	$ekintza = "Txertatu";	
+	$ordua = date('H:i');
+	$ip = $_SERVER['REMOTE_ADDR'];
+	$sql = "INSERT INTO ekintzak (erabid, erabiltzailea, ekintzamota, ordua, ip) VALUES ('$id','$posta','$ekintza', '$ordua', '$ip')"; 
 	 
 	 
 		if (!mysql_query($sql))
@@ -34,6 +45,8 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
 			die("Errorea: ".mysql_error());
 		}
 		$message = "Galdera arazorik gabe gorde da.";
+		
+		
 	}
 	}
 	else{
@@ -42,6 +55,12 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
 		{
 			die("Errorea: ".mysql_error());
 		}
+		$id = 1;
+		$ekintza = "Txertatu";
+		$ordua = date('H:i');
+		$ip = $_SERVER['REMOTE_ADDR'];
+		$sql = "INSERT INTO ekintzak (erabid, erabiltzailea, ekintzamota, ordua, ip) VALUES ('$id','$posta','$ekintza', '$ordua', '$ip')"; 
+	 
 		$message = "Galdera arazorik gabe gorde da.";
 	}
 

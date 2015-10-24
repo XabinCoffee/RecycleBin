@@ -2,11 +2,11 @@
 session_start();
 ?>
  
-<?php $con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
-mysql_select_db("u966022868_xabin",$con);
+<?php //$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
+//mysql_select_db("u966022868_xabin",$con);
 
-//$con = mysql_connect("localhost","root","") or die($con);
-//mysql_select_db("quiz",$con); ?>
+$con = mysql_connect("localhost","root","") or die($con);
+mysql_select_db("quiz",$con); ?>
 
  
 <?php
@@ -35,12 +35,18 @@ $numrows=mysql_num_rows($query);
  }
  
 if($username == $dbusername && $password == $dbpassword){
- 
+	 
+	$ordua = date('H:i');
+	$sql1="INSERT INTO konexioak (eposta, ordua) VALUES ('$username','$ordua')";
+	if (!mysql_query($sql1)){
+		die("Errorea: ".mysql_error());
+	}
+	
  $_SESSION['session_username']=$username;
  
 /* Redirekzionatzeko logina egin ondoren */
 
-$var = $_POST['username'];
+
 
  header("Location: InsertQuestion.php");
  }
