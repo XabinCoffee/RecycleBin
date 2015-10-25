@@ -1,8 +1,16 @@
-<?php //$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
-//mysql_select_db("u966022868_xabin",$con);
+<?php $con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
+mysql_select_db("u966022868_xabin",$con);
 
-$con = mysql_connect("localhost","root","") or die($con);
-mysql_select_db("quiz",$con);
+//$con = mysql_connect("localhost","root","") or die($con);
+//mysql_select_db("quiz",$con);
+
+$ekintza="Bistaratu";
+$ordua = date('H:i');
+$ip = $_SERVER['REMOTE_ADDR'];
+$sql = "INSERT INTO ekintzak (ekintzamota, ordua, ip) VALUES ('$ekintza', '$ordua', '$ip')"; 
+if (!mysql_query($sql)){
+	die("Errorea: ".mysql_error());
+	}
 
 $query="SELECT * FROM galdera";
 $galderak=mysql_query($query);
@@ -32,3 +40,4 @@ $numrows = mysql_numrows($galderak);;mysql_close();
 		?>
 		
 		<link rel="stylesheet" type="text/css" href="styles.css">
+		<title>Quiz</title>

@@ -23,6 +23,10 @@ a {
 
 }
 
+table {
+	margin: auto;
+}
+
 body {
     background-color: #A4D9EB;
 }

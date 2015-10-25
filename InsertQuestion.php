@@ -1,10 +1,10 @@
 <?php
 session_start();
-//$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
-//mysql_select_db("u966022868_xabin",$con);
+$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
+mysql_select_db("u966022868_xabin",$con);
 
-$con = mysql_connect("localhost","root","") or die($con);
-mysql_select_db("quiz",$con); 
+//$con = mysql_connect("localhost","root","") or die($con);
+//mysql_select_db("quiz",$con); 
 
  
 if(!empty($_POST['question']) && !empty($_POST['answer'])){
@@ -60,7 +60,11 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
 		$ordua = date('H:i');
 		$ip = $_SERVER['REMOTE_ADDR'];
 		$sql = "INSERT INTO ekintzak (erabid, erabiltzailea, ekintzamota, ordua, ip) VALUES ('$id','$posta','$ekintza', '$ordua', '$ip')"; 
-	 
+		if (!mysql_query($sql))
+		{
+			die("Errorea: ".mysql_error());
+		}
+		
 		$message = "Galdera arazorik gabe gorde da.";
 	}
 
