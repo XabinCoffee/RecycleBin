@@ -15,7 +15,8 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
  
  if (!empty($_POST['difficulty'])){
 	 
-	 if ($erantzuna>=5 && $erantzuna<=1){
+	 $zailtasuna = $_POST['difficulty'];
+	 if ($zailtasuna>=5 && $zailtasuna<=1){
 		 
 		 $message = "Zailtasun okerra";
 		 
