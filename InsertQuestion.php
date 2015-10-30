@@ -49,14 +49,13 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
 			die("Errorea: ".mysql_error());
 		}
 		else{
-			$assessmentItems = $xml->addChild('assessmentItems');
-			$assessmentItem = $assessmentItems->addChild('assessmentItem');
+			$assessmentItem = $xml->addChild('assessmentItem');
 			$assessmentItem->addAttribute('konplexutasuna',$zailtasuna);
 			$itemBody=$assessmentItem->addChild('itemBody');
 			$correctResponse=$assessmentItem->addChild('correctResponse');
 			$itemBody->addChild('p',$galdera);
 			$correctResponse->addChild('value', $erantzuna);
-			$xml->asXML("teSt.xml");
+			$xml->asXML("galderak.xml");
 			
 		}
 		$message = "Galdera arazorik gabe gorde da.";
@@ -78,6 +77,17 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
 		if (!mysql_query($sql))
 		{
 			die("Errorea: ".mysql_error());
+		}
+		else{
+			$zailtasuna = 0;
+			$assessmentItem = $xml->addChild('assessmentItem');
+			$assessmentItem->addAttribute('konplexutasuna',$zailtasuna);
+			$itemBody=$assessmentItem->addChild('itemBody');
+			$correctResponse=$assessmentItem->addChild('correctResponse');
+			$itemBody->addChild('p',$galdera);
+			$correctResponse->addChild('value', $erantzuna);
+			$xml->asXML("galderak.xml");
+			
 		}
 		
 		$message = "Galdera arazorik gabe gorde da.";

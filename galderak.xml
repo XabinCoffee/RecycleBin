@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <assessmentItems>
 	<assessmentItem konplexutasuna="3" subject="Mikologia">
 		<itemBody> 
@@ -15,5 +15,15 @@
 		<correctResponse>
 			<value>Phalloides</value>
 		</correctResponse>
+		
 	</assessmentItem>
-</assessmentItems>
+	<assessmentItem konplexutasuna="3">
+		<itemBody>
+			<p>kkkkkkkk</p>
+		</itemBody>
+		<correctResponse>
+			<value>kkk</value>
+		</correctResponse>
+	</assessmentItem>
+	
+<assessmentItem konplexutasuna="0"><itemBody><p>Sat</p></itemBody><correctResponse><value>d</value></correctResponse></assessmentItem></assessmentItems>
