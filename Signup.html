@@ -79,7 +79,7 @@ var loadFile = function(event) {
 <body>
 <div id="header">
 <h2>
-<a href="layout.html"> Aurkibidea </a><a href="login.php"> Saioa hasi </a><a href="Signup.html"> Izen-ematea </a><a href="Credits.html"> Kredituak </a>
+<a href="hasiera.html"> Aurkibidea </a><a href="seexmlquestions.php"> Galderak ikusi </a><a href="login.php"> Saioa hasi </a><a href="Signup.html"> Izen-ematea </a><a href="Credits.html"> Kredituak </a>
 </h2>
 
 </div>
@@ -87,25 +87,23 @@ var loadFile = function(event) {
 
 
 <div id="page">
+
+<div class="form-style">
+
 <h1>Izen-ematea</h1>
 <form id="erregistro" name="erregistro" onsubmit="return konprobazioa()" action="Erregistratu.php" method="POST">
-<p><strong>Bete itzazu honako hutsuneak izena emateko.</strong></p>
-<p><strong>Izen-abizenak </strong>
-<input type="text" name="name" requiered />
-</p>
 
-<p><strong>Eposta </strong>
-<input type="text" name="email" requiered />
-</p>
+<input type="text" name="name" placeholder="Izen abizenak" requiered />
 
 
-<p><strong>Pasahitza </strong>
-<input type="password" name="password" requiered />
-</p>
+<input type="text" name="email" placeholder="Eposta" requiered />
 
-<p><strong>Telefono zenbakia </strong>
-<input type="text" name="phone" requiered/>
-</p>
+
+<input type="password" name="password" placeholder="Pasahitza" requiered />
+
+
+<input type="text" name="phone" placeholder="Telefonoa" requiered/>
+
 
 <p><strong>Espezialitatea </strong><br />
 <select id="espezialitatea" name="Espezialitatea" onchange="testuKaxa()">
@@ -133,7 +131,7 @@ var loadFile = function(event) {
 			}
 		</script>
 </p>
-
+<br />
 <p><strong>Interesak</strong> <br />
 <textarea name="interests" cols="20" rows="5">
 
@@ -155,9 +153,14 @@ var loadFile = function(event) {
 
 </p>
 
-<input type="submit" name="submit" value="Bidali" />
+<input type="checkbox" id="laukitxo" onchange="document.getElementById('Bidali').disabled = !this.checked;">Onartzen ditut <a href="illuminati.html" target="_blank">baldintzak</a> </input> 
+
+<br />
+<br />
+
+<input type="submit" name="Bidali" class="inputButton" id="Bidali" value=" Bidali " disabled/> 
 
 </form>
-
+</div>
 </div>
 </body>

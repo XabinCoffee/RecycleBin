@@ -68,19 +68,26 @@ if($username == $dbusername && $password == $dbpassword){
 
 <title>Hasi saioa</title>
 
- <link rel="stylesheet" type="text/css" href="login.css">
- <div class="container mlogin">
- <div id="login">
+ <link rel="stylesheet" type="text/css" href="styles.css">
+ 
+ 
+ <div id="header">
+<h2>
+<a href="hasiera.html"> Aurkibidea </a><a href="seexmlquestions.php"> Galderak ikusi </a><a href="login.php"> Saioa hasi </a><a href="Signup.html"> Izen-ematea </a><a href="Credits.html"> Kredituak </a>
+</h2>
+
+</div>
+ 
+ 
+ <div id="page">
+ <div class="form-style">
  <h1>Hasi saioa</h1>
 <form name="loginform" id="loginform" action="" method="POST">
- <p>
- <label for="user_login">Eposta:<br />
- <input type="text" name="username" id="username" class="input" value="" size="20" /></label>
- </p>
- <p>
- <label for="user_pass">Pasahitza:<br />
- <input type="password" name="password" class="input" value="" size="20" /></label>
- </p>
+
+ <input type="text" name="username" id="username" class="input" value="" size="20" placeholder="Eposta" />
+ 
+ <input type="password" name="password" class="input" value="" size="20" placeholder="Pasahitza"/>
+
  <p class="submit">
  <input type="submit" name="login" class="button" value="Hasi Saioa"  />
  </p>

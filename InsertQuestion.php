@@ -56,9 +56,9 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
 			$itemBody->addChild('p',$galdera);
 			$correctResponse->addChild('value', $erantzuna);
 			$xml->asXML("galderak.xml");
-			
+			$message = "Galdera arazorik gabe gorde da.";
 		}
-		$message = "Galdera arazorik gabe gorde da.";
+		
 		
 		
 	}
@@ -102,32 +102,34 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
 
 <title>Galdera sortu</title>
 
- <link rel="stylesheet" type="text/css" href="login.css">
- <div class="container mlogin">
- <div id="login">
- <h1>Galdera bat sortu</h1>
-<form name="questionform" id="questionform" method="POST">
- <p>
- <label for="user_question">Galdera:<br />
- <input type="text" name="question" id="question" class="input" value="" size="20" /></label>
- </p>
- <p>
- <label for="user_answer">Erantzuna:<br />
- <input type="text" name="answer" id="answer" class="input" value="" size="20" /></label>
- </p>
-  <p>
- <label for="user_answer">Zailtasuna (1-5):<br />
- <input type="text" name="difficulty" id="difficulty" class="input" value="" size="20" /></label>
- </p>
-
- <p class="submit">
- <input type="submit" name="submit" class="button" value="Bidali" />
- </p>
-  
-</form>
+ <link rel="stylesheet" type="text/css" href="styles.css">
  
+ <div id="header">
+<h2>
+<a href="layout.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="layout.html"> Irten </a>
+</h2>
+
 </div>
  
+ <div id="page">
+<div class="form-style">
+
+<h1>Zure galdera gehitu</h1>
+<form name="questionform" id="questionform" method="POST">
+
+ <input type="text" name="question" id="question" class="input" value="" size="20" placeholder="Galdera" />
+
+ <input type="text" name="answer" id="answer" class="input" value="" size="20" placeholder="Erantzuna" />
+
+ <input type="text" name="difficulty" id="difficulty" class="input" value="" size="20" placeholder="Zailtasuna (1 eta 5 artean)" />
+
+ 
+ <input type="submit" name="submit" class="button" value="Bidali" />
+
+  
+</form>
+
+</div>
 </div>
 
 
