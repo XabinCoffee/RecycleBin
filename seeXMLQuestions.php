@@ -17,11 +17,7 @@ $data = $xml->assessmentItem;
 </div>
  
   <div id="page">
-  
-
-
-  
-  
+ 
   
  <table class="taula"> 
  <tr>

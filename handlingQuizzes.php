@@ -22,6 +22,27 @@ $niregalderak=mysql_query($sql);
 
 <title>Maneiating Galder's</title>
 
+<script type="text/javascript">
+function eguneratu(){
+	
+	var table = document.getElementById('taula');
+		//1go errenkadatik aurrera irakurri (tituluak ez)
+        for (var r = 1; r < table.rows[r].cells.length; r++) {
+				var galdera = table.rows[r].cells[1].innerHTML;
+				var zailtasuna = table.rows[r].cells[2].innerHTML;
+				var erantzuna = table.rows[r].cells[3].innerHTML;
+				alert(galdera);
+				alert(zailtasuna);
+				alert(erantzuna);
+				//parametroak edukita, AJAX erabili eguneratzeko               
+        }
+
+
+	
+	
+}
+</script>
+
  <link rel="stylesheet" type="text/css" href="styles.css">
  
  <div id="header">
@@ -32,7 +53,7 @@ $niregalderak=mysql_query($sql);
 </div>
  
   <div id="page">
- <table class="taula"> 
+ <table id="taula" class="taula"> 
  
  <tr>
  <th>ID</th>
@@ -60,13 +81,10 @@ $niregalderak=mysql_query($sql);
  
     <div class="button-style">
 
-<form name="questionform" id="questionform" method="POST">
-
  
- <input type="submit" name="submit" class="button" value="Aldaketak gorde (edo onetsi)" />
+<button type="button" onclick="eguneratu()">Aldaketak gorde</button>
 
-  
-</form>
+
 
 </div>
 </div>
