@@ -1,7 +1,7 @@
 <?php
 session_start();
-$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
-mysql_select_db("u966022868_xabin",$con);
+//$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
+//mysql_select_db("u966022868_xabin",$con);
 
 //$con = mysql_connect("localhost","root","") or die($con);
 //mysql_select_db("quiz",$con); 
@@ -9,7 +9,7 @@ mysql_select_db("u966022868_xabin",$con);
 
 $user = $_SESSION['session_username'];
 
-$sql = "SELECT * FROM Galdera where posta='$user'";
+$sql = "SELECT * FROM galdera where posta='$user'";
 if (!mysql_query($sql)){
 	die("Errorea: ".mysql_error());
 }
@@ -20,12 +20,34 @@ $niregalderak=mysql_query($sql);
  ?>
 
 
-<title>Maneiating Galder's</title>
+<title>Galderak kudeatuz</title>
 
 <script type="text/javascript">
 function eguneratu(){
 	
-	var table = document.getElementById('taula');
+	
+	/* if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET","getuser.php?q="+str,true);
+        xmlhttp.send();
+    } */
+
+	
+	
+	
+	
+	
+	/*var table = document.getElementById('taula');
 		//1go errenkadatik aurrera irakurri (tituluak ez)
         for (var r = 1; r < table.rows[r].cells.length; r++) {
 				var galdera = table.rows[r].cells[1].innerHTML;
@@ -38,7 +60,7 @@ function eguneratu(){
         }
 
 
-	
+	*/
 	
 }
 </script>
@@ -52,15 +74,17 @@ function eguneratu(){
 
 </div>
  
-  <div id="page">
+ <form name="form" id="form" action="eguneratu()" method="POST">
+ <div id="page">
  <table id="taula" class="taula"> 
  
+ <thead>
  <tr>
  <th>ID</th>
  <th>Galdera</th>
  <th>Zailtasuna</th>
  <th>Erantzuna</th>
- <th>pa delete?</th>
+ <th>Ezabatu?</th>
  </tr>
  </thead>
  
@@ -80,14 +104,11 @@ function eguneratu(){
  </table>
  
     <div class="button-style">
-
- 
-<button type="button" onclick="eguneratu()">Aldaketak gorde</button>
-
-
-
+		<input type="submit" name="Bidali" class="inputButton" id="Bidali" value=" Gorde aldaketak "/> 
+    </div>
+	
 </div>
-</div>
+</form>
 
 
 

@@ -129,6 +129,7 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
   
 </form>
 
+<h1> <a href="handlingQuizzes.php">Ikusi/Editatu zure galderak</a> </h1>
 </div>
 </div>
 

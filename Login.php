@@ -2,11 +2,11 @@
 session_start();
 ?>
  
-<?php $con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
-mysql_select_db("u966022868_xabin",$con);
+<?php //$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
+//mysql_select_db("u966022868_xabin",$con);
 
-//$con = mysql_connect("localhost","root","") or die($con);
-//mysql_select_db("quiz",$con); ?>
+$con = mysql_connect("localhost","root","") or die($con);
+mysql_select_db("quiz",$con); ?>
 
  
 <?php
@@ -68,7 +68,7 @@ if($username == $dbusername && $password == $dbpassword){
 
 <title>Hasi saioa</title>
 
- <link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet" type="text/css" href="styles.css">
  
  
  <div id="header">
