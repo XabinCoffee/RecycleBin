@@ -3,8 +3,8 @@ session_start();
 //$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
 //mysql_select_db("u966022868_xabin",$con);
 
-//$con = mysql_connect("localhost","root","") or die($con);
-//mysql_select_db("quiz",$con); 
+$con = mysql_connect("localhost","root","") or die($con);
+mysql_select_db("quiz",$con); 
 
 
 $user = $_SESSION['session_username'];
@@ -25,7 +25,6 @@ $niregalderak=mysql_query($sql);
 <script type="text/javascript">
 function eguneratu(){
 	
-	
 	/* if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
@@ -42,11 +41,6 @@ function eguneratu(){
         xmlhttp.send();
     } */
 
-	
-	
-	
-	
-	
 	/*var table = document.getElementById('taula');
 		//1go errenkadatik aurrera irakurri (tituluak ez)
         for (var r = 1; r < table.rows[r].cells.length; r++) {
@@ -58,8 +52,6 @@ function eguneratu(){
 				alert(erantzuna);
 				//parametroak edukita, AJAX erabili eguneratzeko               
         }
-
-
 	*/
 	
 }
