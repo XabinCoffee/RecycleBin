@@ -5,9 +5,9 @@
 	if(isset($_GET['email'])){
 		$result=$soapclient->call('comprobar',array('x'=>$_GET['email']));
 		if($result=="NO"){
-			echo"Ez zaude WS ikasgaian matrikulatuta";
+			echo"Ez zaude Web Sistemetan matrikulatuta";
 		}else{
-			echo"Emaila baliozkoa da";
+			echo"Email egokia.";
 		}
 	}
 	

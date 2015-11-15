@@ -64,7 +64,7 @@ function konprobatuEmaila(){
 <div class="form-style">
 
 <h1>Ikasleen izen-ematea</h1>
-<form id="erregistro" name="erregistro" onsubmit="return konprobazioa()" method="POST">
+<form id="erregistro" name="erregistro" method="POST">
 
 <input type="text" id='email' name="email" placeholder="Eposta"/>
 
