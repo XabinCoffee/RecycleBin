@@ -33,8 +33,9 @@ function konprobatuEmaila(){
 			function konprobatuPass(){				
 					eskaera1 = new XMLHttpRequest();
 					var pass = document.getElementById('password').value;
+					var pass2 = document.getElementById('password2').value;
 					
-					eskaera1.open("GET","soapBezEgiaztatuPasahitzaAJAX.php?password="+pass,true); 
+					eskaera1.open("GET","soapBezEgiaztatuPasahitzaAJAX.php?password="+pass+"&password2="+pass2,true); 
 					eskaera1.send(null);
 					
 					eskaera1.onreadystatechange = function(){
@@ -69,6 +70,8 @@ function konprobatuEmaila(){
 <input type="text" id='email' name="email" placeholder="Eposta"/>
 
 <input type="password" id='password' name="password" placeholder="Pasahitza"/>
+
+<input type="password" id='password2' name="password2" placeholder="Pasahitza errepikatu"/>
 
 <input type="button" name="Bidali" class="inputButton" id="Bidali" value=" Bidali " onClick="konprobatu()"/> 
 

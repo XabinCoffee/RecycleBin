@@ -47,8 +47,8 @@ if($username == $dbusername && $password == $dbpassword){
 /* Redirekzionatzeko logina egin ondoren */
 
 
-
- header("Location: InsertQuestion.php");
+if ($_SESSION['session_username']=="web000@ehu.es") header("Location: handlingquizzes.php");
+else header("Location: InsertQuestion.php");
  }
  } else {
 	if (filter_var($username, FILTER_VALIDATE_EMAIL) === false){
