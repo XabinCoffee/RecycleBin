@@ -47,7 +47,7 @@ if($username == $dbusername && $password == $dbpassword){
 /* Redirekzionatzeko logina egin ondoren */
 
 
-if ($_SESSION['session_username']=="web000@ehu.es") header("Location: handlingquizzes.php");
+if ($_SESSION['session_username']=="web000@ehu.es") header("Location: reviewquizzes.php");
 else header("Location: InsertQuestion.php");
  }
  } else {
