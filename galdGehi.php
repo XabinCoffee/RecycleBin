@@ -1,9 +1,21 @@
 <?php
-session_start();
-
 $get = file_get_contents('galderak.xml');
 $xml = simplexml_load_string($get);
 $data = $xml->assessmentItem;
+
+$zailtasuna = $_POST['difficulty'];
+$gaia = $_POST['gaia'];
+$galdera = $_POST['question'];
+$erantzuna = $_POST['asnwer'];
+
+			$assessmentItem = $xml->addChild('assessmentItem');
+			$assessmentItem->addAttribute('konplexutasuna',$zailtasuna);
+			$assessmentItem->addAttribute('subject',$gaia);
+			$itemBody=$assessmentItem->addChild('itemBody');
+			$correctResponse=$assessmentItem->addChild('correctResponse');
+			$itemBody->addChild('p',$galdera);
+			$correctResponse->addChild('value', $erantzuna);
+			$xml->asXML("galderak.xml");
 
 echo ("
 <div class='form-style'>

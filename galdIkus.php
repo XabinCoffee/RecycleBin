@@ -1,7 +1,4 @@
 <?php
-session_start();
-
-echo "lol";
 
 $get = file_get_contents('galderak.xml');
 $xml = simplexml_load_string($get);

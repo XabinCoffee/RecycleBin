@@ -16,4 +16,5 @@
 			<value>Phalloides</value>
 		</correctResponse>
 		</assessmentItem>
-	<assessmentItem konplexutasuna="1" subject="EHU"><itemBody><p>Nor da WSko irakaslea?</p></itemBody><correctResponse><value>Rosa</value></correctResponse></assessmentItem></assessmentItems>
+	<assessmentItem konplexutasuna="1" subject="EHU"><itemBody><p>Nor da WSko irakaslea?</p></itemBody><correctResponse><value>Rosa</value></correctResponse></assessmentItem>
+	<assessmentItem konplexutasuna="" subject=""><itemBody><p/></itemBody><correctResponse><value/></correctResponse></assessmentItem></assessmentItems>

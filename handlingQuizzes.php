@@ -38,7 +38,7 @@ function galdIkus(){
 	xmlhttp.open("GET","galdIkus.php",true);
     xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("galdIkus").innerHTML = xmlhttp.responseText;
+                document.getElementById("gald").innerHTML = xmlhttp.responseText;
             }
         }
 		
@@ -56,14 +56,15 @@ function galdIkus(){
 function galdGehi(){
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET","galdGehi.php",true);
+	xmlhttp.send(null);
     xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("galdGehi").innerHTML = xmlhttp.responseText;
+                document.getElementById("gald").innerHTML = xmlhttp.responseText;
             }
         }
 		
-		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send();
+		//xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        
     }
 	
 </script>
@@ -74,7 +75,7 @@ function galdGehi(){
  
  <div id="header">
 <h2>
-<a href="layoutErab.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="layout.html"> Irten </a>
+<a href="layoutErab.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="logout.php"> Irten </a>
 </h2>
 
 </div>
@@ -85,21 +86,17 @@ function galdGehi(){
  
  <div class="form-style">
  <div id="button.style"> 
-<a href="handlingquizzes.php">
+
 <input type="submit" value="Galderak ikusi" onClick="galdIkus()" />
 <br />
 <br />
-<a href="handlingquizzes.php">
+
 <input type="submit" value="Galdera berria gehitu" onClick="galdGehi()" />
 </div>
 </div>
  
- <div id="galdGehi">
  
- </div>
- 
- 
-  <div id="galdIkus">
+  <div id="gald">
  
  </div>
  
