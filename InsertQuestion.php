@@ -6,14 +6,22 @@ session_start();
 $con = mysql_connect("localhost","root","") or die($con);
 mysql_select_db("quiz",$con); 
 
+
+if(empty($_SESSION['session_username']))
+{
+    header('Location: login.php');
+    exit;
+}
+
 $xml = simplexml_load_file('galderak.xml');
 
  
-if(!empty($_POST['question']) && !empty($_POST['answer'])){
+if(!empty($_POST['question']) && !empty($_POST['answer']) && !empty($_POST['gaia'])){
 	
  $posta = $_SESSION['session_username'];
  $galdera = $_POST['question'];
  $erantzuna = $_POST['answer'];
+ $gaia = $_POST['gaia'];
  
  if (!empty($_POST['difficulty'])){
 	 
@@ -51,6 +59,7 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
 		else{
 			$assessmentItem = $xml->addChild('assessmentItem');
 			$assessmentItem->addAttribute('konplexutasuna',$zailtasuna);
+			$assessmentItem->addAttribute('subject',$gaia);
 			$itemBody=$assessmentItem->addChild('itemBody');
 			$correctResponse=$assessmentItem->addChild('correctResponse');
 			$itemBody->addChild('p',$galdera);
@@ -106,7 +115,7 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
  
  <div id="header">
 <h2>
-<a href="layout.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="layout.html"> Irten </a>
+<a href="layoutErab.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="layout.html"> Irten </a>
 </h2>
 
 </div>
@@ -120,6 +129,8 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
  <input type="text" name="question" id="question" class="input" value="" size="20" placeholder="Galdera" />
 
  <input type="text" name="answer" id="answer" class="input" value="" size="20" placeholder="Erantzuna" />
+ 
+ <input type="text" name="gaia" id="gaia" class="input" value="" size="20" placeholder="Gaia" />
 
  <input type="text" name="difficulty" id="difficulty" class="input" value="" size="20" placeholder="Zailtasuna (1 eta 5 artean)" />
 
@@ -129,7 +140,10 @@ if(!empty($_POST['question']) && !empty($_POST['answer'])){
   
 </form>
 
-<h1> <a href="handlingQuizzes.php">Ikusi/Editatu zure galderak</a> </h1>
+<div id="button.style"> 
+<a href="handlingquizzes.php">
+<input type="submit" value="Galderak ikusi eta editatu" />
+</div>
 </div>
 </div>
 

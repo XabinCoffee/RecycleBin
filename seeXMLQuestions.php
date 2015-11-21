@@ -23,6 +23,7 @@ $data = $xml->assessmentItem;
  <tr>
  <th>Galdera</th>
  <th>Zailtasuna</th>
+  <th>Gaia</th>
  <th>Erantzuna</th>
  </tr>
  </thead>
@@ -32,6 +33,7 @@ $data = $xml->assessmentItem;
  <tr>
  <td><?php echo $row->itemBody->p ?></td>
  <td><?php echo $row['konplexutasuna'] ?></td>
+  <td><?php echo $row['subject'] ?></td>
  <td><?php echo $row->correctResponse->value ?></td>
  </tr>
 
@@ -42,16 +44,6 @@ $data = $xml->assessmentItem;
  </table>
  
  
-   <div class="button-style">
 
-<form name="questionform" id="questionform" method="POST">
-
- 
- <input type="submit" name="submit" class="button" value="Editatu" />
-
-  
-</form>
-
-</div>
 
 </div>

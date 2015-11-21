@@ -6,6 +6,11 @@ session_start();
 $con = mysql_connect("localhost","root","") or die($con);
 mysql_select_db("quiz",$con); 
 
+if($_SESSION['session_username'] != "web000@ehu.es")
+{
+    header('Location: login.php');
+    exit;
+}
 
 $user = $_SESSION['session_username'];
 
@@ -65,7 +70,7 @@ function eguneratu(){
  
  <div id="header">
 <h2>
-<a href="layout.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="layout.html"> Irten </a>
+<a href="layoutErab.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="layout.html"> Irten </a>
 </h2>
 
 </div>

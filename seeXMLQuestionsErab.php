@@ -11,7 +11,7 @@ $data = $xml->assessmentItem;
 
 <div id="header">
 <h2>
-<a href="hasieraerab.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="hasiera.html"> Irten </a>
+<a href="layoutErab.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="layout.html"> Irten </a>
 </h2>
 
 </div>
@@ -21,6 +21,7 @@ $data = $xml->assessmentItem;
  <tr>
  <th>Galdera</th>
  <th>Zailtasuna</th>
+ <th>Gaia</th>
  <th>Erantzuna</th>
  </tr>
  </thead>
@@ -30,6 +31,7 @@ $data = $xml->assessmentItem;
  <tr>
  <td><?php echo $row->itemBody->p ?></td>
  <td><?php echo $row['konplexutasuna'] ?></td>
+  <td><?php echo $row['subject'] ?></td>
  <td><?php echo $row->correctResponse->value ?></td>
  </tr>
 
@@ -38,4 +40,13 @@ $data = $xml->assessmentItem;
  ?>
  
  </table>
+
+<div class="form-style">
+<div id="button.style"> 
+<a href="handlingquizzes.php">
+<input type="submit" value="Galderak editatu" />
+</a>
+</div>
+</div>
+
 </div>

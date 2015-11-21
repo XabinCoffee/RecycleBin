@@ -7,6 +7,13 @@ $con = mysql_connect("localhost","root","") or die($con);
 mysql_select_db("quiz",$con); 
 
 
+if(empty($_SESSION['session_username']))
+{
+    header('Location: login.php');
+    exit;
+}
+
+
 $user = $_SESSION['session_username'];
 
 $sql = "SELECT * FROM galdera where posta='$user'";
@@ -22,86 +29,80 @@ $niregalderak=mysql_query($sql);
 
 <title>Galderak kudeatuz</title>
 
-<script type="text/javascript">
-function eguneratu(){
-	
-	/* if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
+
+
+<script type="text/javascript" language="javascript">
+
+function galdIkus(){
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET","galdIkus.php",true);
+    xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                document.getElementById("galdIkus").innerHTML = xmlhttp.responseText;
             }
         }
-        xmlhttp.open("GET","getuser.php?q="+str,true);
+		
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send();
-    } */
-
-	/*var table = document.getElementById('taula');
-		//1go errenkadatik aurrera irakurri (tituluak ez)
-        for (var r = 1; r < table.rows[r].cells.length; r++) {
-				var galdera = table.rows[r].cells[1].innerHTML;
-				var zailtasuna = table.rows[r].cells[2].innerHTML;
-				var erantzuna = table.rows[r].cells[3].innerHTML;
-				alert(galdera);
-				alert(zailtasuna);
-				alert(erantzuna);
-				//parametroak edukita, AJAX erabili eguneratzeko               
-        }
-	*/
+    }
 	
-}
 </script>
+
+
+
+
+<script type="text/javascript" language="javascript">
+
+function galdGehi(){
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET","galdGehi.php",true);
+    xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("galdGehi").innerHTML = xmlhttp.responseText;
+            }
+        }
+		
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send();
+    }
+	
+</script>
+
+
 
  <link rel="stylesheet" type="text/css" href="styles.css">
  
  <div id="header">
 <h2>
-<a href="layout.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="layout.html"> Irten </a>
+<a href="layoutErab.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="layout.html"> Irten </a>
 </h2>
 
 </div>
  
- <form name="form" id="form" action="eguneratu()" method="POST">
- <div id="page">
- <table id="taula" class="taula"> 
  
- <thead>
- <tr>
- <th>ID</th>
- <th>Galdera</th>
- <th>Zailtasuna</th>
- <th>Erantzuna</th>
- <th>Ezabatu?</th>
- </tr>
- </thead>
+  <div id="page">
  
- <?php 
- while ($row = mysql_fetch_array($niregalderak)) {
-    
-		echo '<tr>';
-		echo '<td>' . $row['ID'] . '</td>';
-        echo '<td contenteditable=true>' . $row['galdera'] . '</td>';
-		echo '<td contenteditable=true>' . $row['zailtasuna'] . '</td>';
-		echo '<td contenteditable=true>' . $row['erantzuna'] . '</td>';
-		echo '<td>  <input type=checkbox>  </td>';
-    
-}
- ?>
  
- </table>
- 
-    <div class="button-style">
-		<input type="submit" name="Bidali" class="inputButton" id="Bidali" value=" Gorde aldaketak "/> 
-    </div>
-	
+ <div class="form-style">
+ <div id="button.style"> 
+<a href="handlingquizzes.php">
+<input type="submit" value="Galderak ikusi" onClick="galdIkus()" />
+<br />
+<br />
+<a href="handlingquizzes.php">
+<input type="submit" value="Galdera berria gehitu" onClick="galdGehi()" />
 </div>
-</form>
-
+</div>
+ 
+ <div id="galdGehi">
+ 
+ </div>
+ 
+ 
+  <div id="galdIkus">
+ 
+ </div>
+ 
 
 
  <?php if (!empty($message)) {echo "<p class=\"error\">" . "MESSAGE: ". $message . "</p>";} ?>
