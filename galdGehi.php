@@ -6,9 +6,10 @@ $data = $xml->assessmentItem;
 $zailtasuna = $_POST['difficulty'];
 $gaia = $_POST['gaia'];
 $galdera = $_POST['question'];
-$erantzuna = $_POST['asnwer'];
+$erantzuna = $_POST['answer'];
 
-			$assessmentItem = $xml->addChild('assessmentItem');
+
+			/*$assessmentItem = $xml->addChild('assessmentItem');
 			$assessmentItem->addAttribute('konplexutasuna',$zailtasuna);
 			$assessmentItem->addAttribute('subject',$gaia);
 			$itemBody=$assessmentItem->addChild('itemBody');
@@ -16,8 +17,9 @@ $erantzuna = $_POST['asnwer'];
 			$itemBody->addChild('p',$galdera);
 			$correctResponse->addChild('value', $erantzuna);
 			$xml->asXML("galderak.xml");
+			*/
 
-echo ("
+echo "
 <div class='form-style'>
 
 <h1>Zure galdera gehitu</h1>
@@ -38,7 +40,7 @@ echo ("
 </form>
 
 
-</div> ");
+</div> ";
 
 
 ?>
