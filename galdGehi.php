@@ -2,12 +2,12 @@
 $get = file_get_contents('galderak.xml');
 $xml = simplexml_load_string($get);
 $data = $xml->assessmentItem;
-
+/*
 $zailtasuna = $_POST['difficulty'];
 $gaia = $_POST['gaia'];
 $galdera = $_POST['question'];
 $erantzuna = $_POST['answer'];
-
+*/
 
 			/*$assessmentItem = $xml->addChild('assessmentItem');
 			$assessmentItem->addAttribute('konplexutasuna',$zailtasuna);

@@ -24,11 +24,12 @@ if (!mysql_query($sql)){
 $niregalderak=mysql_query($sql);
 
 
- ?>
+$get = file_get_contents('galderak.xml');
+$xml = simplexml_load_string($get);
+$data = $xml->assessmentItem;
 
 
-<title>Galderak kudeatuz</title>
-
+?>
 
 
 <script type="text/javascript" language="javascript">
@@ -38,7 +39,8 @@ function galdIkus(){
 	xmlhttp.open("GET","galdIkus.php",true);
     xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("gald").innerHTML = xmlhttp.responseText;
+                document.getElementById("galdIkus").innerHTML = xmlhttp.responseText;
+				
             }
         }
 		
@@ -59,7 +61,7 @@ function galdGehi(){
 	xmlhttp.send(null);
     xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("gald").innerHTML = xmlhttp.responseText;
+                document.getElementById("galdGehi").innerHTML = xmlhttp.responseText;
             }
         }
 		
@@ -69,13 +71,82 @@ function galdGehi(){
 	
 </script>
 
+<?php
+
+
+
+
+
+
+
+if(!empty($_POST['question']) && !empty($_POST['answer']) && !empty($_POST['gaia'])){
+	
+ $posta = $_SESSION['session_username'];
+ $galdera = $_POST['question'];
+ $erantzuna = $_POST['answer'];
+ $gaia = $_POST['gaia'];
+ 
+ if (!empty($_POST['difficulty'])){
+	 $zailtasuna = $_POST['difficulty'];
+	 if ($zailtasuna>=5 && $zailtasuna<=1){
+		 $message = "Zailtasun okerra";
+	 }
+	 
+	 else{
+		 $zailtasuna = $_POST['difficulty'];
+		 $sql = "INSERT INTO galdera (galdera, erantzuna, zailtasuna, posta) VALUES ('$galdera','$erantzuna','$zailtasuna', '$posta'	)"; 
+		 mysql_query($sql);
+	 }
+	 
+	 $assessmentItem = $xml->addChild('assessmentItem');
+			$assessmentItem->addAttribute('konplexutasuna',$zailtasuna);
+			$assessmentItem->addAttribute('subject',$gaia);
+			$itemBody=$assessmentItem->addChild('itemBody');
+			$correctResponse=$assessmentItem->addChild('correctResponse');
+			$itemBody->addChild('p',$galdera);
+			$correctResponse->addChild('value', $erantzuna);
+			$xml->asXML("galderak.xml");
+			$message = "Galdera arazorik gabe gorde da.";
+		echo '<script type="text/javascript">galdIkus();</script>';
+ }
+			
+else{
+	$sql = "INSERT INTO galdera (galdera, erantzuna, zailtasuna, posta) VALUES ('$galdera','$erantzuna', NULL,'$posta')"; 
+	mysql_query($sql);
+		$id = 1;
+		$ekintza = "Txertatu";
+		$ordua = date('H:i');
+		$ip = $_SERVER['REMOTE_ADDR'];
+		$sql = "INSERT INTO ekintzak (erabid, erabiltzailea, ekintzamota, ordua, ip) VALUES ('$id','$posta','$ekintza', '$ordua', '$ip')"; 
+		mysql_query($sql);
+			$zailtasuna = 0;
+			$assessmentItem = $xml->addChild('assessmentItem');
+			$assessmentItem->addAttribute('konplexutasuna',$zailtasuna);
+			$itemBody=$assessmentItem->addChild('itemBody');
+			$correctResponse=$assessmentItem->addChild('correctResponse');
+			$itemBody->addChild('p',$galdera);
+			$correctResponse->addChild('value', $erantzuna);
+			$xml->asXML("galderak.xml");
+		
+		$message = "Galdera arazorik gabe gorde da.";
+		
+		echo '<script type="text/javascript">galdIkus();</script>';
+}
+	 
+ }
+
+ ?>
+
+
+
+
 
 
  <link rel="stylesheet" type="text/css" href="styles.css">
  
  <div id="header">
 <h2>
-<a href="layoutErab.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="logout.php"> Irten </a>
+<a href="layoutErab.html"> Aurkibidea </a><a href="handlingquizzes.php"> Galderak kudeatu </a><a href="CreditsErab.html"> Kredituak </a><a href="logout.php"> Irten </a>
 </h2>
 
 </div>
@@ -94,12 +165,14 @@ function galdGehi(){
 <input type="submit" value="Galdera berria gehitu" onClick="galdGehi()" />
 </div>
 </div>
+   <div id="galdGehi">
  
+ </div>
  
-  <div id="gald">
+  <div id="galdIkus">
  
  </div>
  
 
 
- <?php if (!empty($message)) {echo "<p class=\"error\">" . "MESSAGE: ". $message . "</p>";} ?>
+ <?php if (!empty($message)) {echo " <div id='mezua'> <p class=\"error\">" . "MESSAGE: ". $message . "</p> </div>";} ?>

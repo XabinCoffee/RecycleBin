@@ -115,7 +115,7 @@ if(!empty($_POST['question']) && !empty($_POST['answer']) && !empty($_POST['gaia
  
  <div id="header">
 <h2>
-<a href="layoutErab.html"> Aurkibidea </a><a href="InsertQuestion.php"> Galdera gehitu </a><a href="seexmlquestionserab.php"> Galderak ikusi </a><a href="CreditsErab.html"> Kredituak </a><a href="logout.php"> Irten </a>
+<a href="layoutErab.html"> Aurkibidea </a><a href="handlingquizzes.php"> Galderak kudeatu </a><a href="CreditsErab.html"> Kredituak </a><a href="logout.php"> Irten </a>
 </h2>
 
 </div>

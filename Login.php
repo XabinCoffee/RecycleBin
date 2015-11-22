@@ -48,7 +48,7 @@ if($username == $dbusername && $password == $dbpassword){
 
 
 if ($_SESSION['session_username']=="web000@ehu.es") header("Location: reviewquizzes.php");
-else header("Location: InsertQuestion.php");
+else header("Location: handlingquizzes.php");
  }
  } else {
 	if (filter_var($username, FILTER_VALIDATE_EMAIL) === false){
