@@ -1,10 +1,10 @@
 <?php
 session_start();
-//$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
-//mysql_select_db("u966022868_xabin",$con);
+$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
+mysql_select_db("u966022868_xabin",$con);
 
-$con = mysql_connect("localhost","root","") or die($con);
-mysql_select_db("quiz",$con); 
+//$con = mysql_connect("localhost","root","") or die($con);
+//mysql_select_db("quiz",$con); 
 
 
 if(empty($_SESSION['session_username']))
@@ -115,7 +115,7 @@ if(!empty($_POST['question']) && !empty($_POST['answer']) && !empty($_POST['gaia
  
  <div id="header">
 <h2>
-<a href="layoutErab.html"> Aurkibidea </a><a href="handlingquizzes.php"> Galderak kudeatu </a><a href="CreditsErab.html"> Kredituak </a><a href="logout.php"> Irten </a>
+<a href="layouterab.html"> Aurkibidea </a><a href="handlingquizzes.php"> Galderak kudeatu </a><a href="creditserab.html"> Kredituak </a><a href="logout.php"> Irten </a>
 </h2>
 
 </div>

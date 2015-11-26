@@ -11,7 +11,7 @@ $data = $xml->assessmentItem;
 
 <div id="header">
 <h2>
-<a href="layoutErab.html"> Aurkibidea </a><a href="handlingquizzes.php"> Galderak kudeatu </a><a href="CreditsErab.html"> Kredituak </a><a href="logout.php"> Irten </a>
+<a href="layouterab.html"> Aurkibidea </a><a href="handlingquizzes.php"> Galderak kudeatu </a><a href="creditserab.html"> Kredituak </a><a href="logout.php"> Irten </a>
 </h2>
 
 </div>
