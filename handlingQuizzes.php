@@ -7,10 +7,14 @@ $con = mysql_connect("localhost","root","") or die($con);
 mysql_select_db("quiz",$con); 
 
 
-if(empty($_SESSION['session_username']))
+if(empty($_SESSION['session_username'] ))
 {
     header('Location: login.php');
     exit;
+}
+else if ($_SESSION['session_username'] == "web000@ehu.es"){
+	header('Location: reviewquizzes.php');
+	exit;
 }
 
 
