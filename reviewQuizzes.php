@@ -3,7 +3,7 @@ session_start();
 
 if($_SESSION['session_username'] != "web000@ehu.es")
 {
-    header('Location: login.php');
+    header("Location: logout.php");
     exit;
 }
 

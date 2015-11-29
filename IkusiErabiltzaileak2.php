@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+if ($_SESSION['session_username'] != "web000@ehu.es"){
+	header("Location: logout.php");
+}
+
 //Konexioa sortu datubasearekin
 //$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
 //mysql_select_db("u966022868_xabin",$con);

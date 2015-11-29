@@ -22,7 +22,7 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
  $username=$_POST['username'];
  $password=$_POST['password'];
  
-$query =mysql_query("SELECT * FROM erabiltzaile WHERE Eposta='".$username."' AND Pasahitza='".$password."'");
+$query =mysql_query("SELECT * FROM erabiltzaile WHERE Eposta='".$username."'");
  
 $numrows=mysql_num_rows($query);
  if($numrows!=0){
@@ -34,7 +34,9 @@ $numrows=mysql_num_rows($query);
  
  }
  
-if($username == $dbusername && $password == $dbpassword){
+ 
+ 
+if($username == $dbusername && hash_equals($dbpassword, crypt($password, $dbpassword))) {
 	 
 	$ordua = date('H:i');
 	$sql1="INSERT INTO konexioak (eposta, ordua) VALUES ('$username','$ordua')";
