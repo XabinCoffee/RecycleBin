@@ -22,7 +22,7 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
  $username=$_POST['username'];
  $password=$_POST['password'];
  
-$query =mysql_query("SELECT * FROM erabiltzaile WHERE Eposta='".$username."' AND Pasahitza='".$password."'");
+$query =mysql_query("SELECT * FROM erabiltzaile WHERE Eposta='".$username."'");
  
 $numrows=mysql_num_rows($query);
  if($numrows!=0){
@@ -34,7 +34,9 @@ $numrows=mysql_num_rows($query);
  
  }
  
-if($username == $dbusername && $password == $dbpassword){
+ 
+ 
+if($username == $dbusername && hash_equals($dbpassword, crypt($password, $dbpassword))) {
 	 
 	$ordua = date('H:i');
 	$sql1="INSERT INTO konexioak (eposta, ordua) VALUES ('$username','$ordua')";
@@ -73,7 +75,7 @@ else header("Location: handlingquizzes.php");
  
  <div id="header">
 <h2>
-<a href="layout.html"> Aurkibidea </a><a href="seexmlquestions.php"> Galderak ikusi </a><a href="login.php"> Saioa hasi </a><a href="Signup.html"> Izen-ematea </a><a href="Credits.html"> Kredituak </a>
+<a href="layout.html"> Aurkibidea </a><a href="seexmlquestions.php"> Galderak ikusi </a><a href="login.php"> Saioa hasi </a><a href="signup.html"> Izen-ematea </a><a href="credits.html"> Kredituak </a>
 </h2>
 
 </div>
@@ -91,7 +93,8 @@ else header("Location: handlingquizzes.php");
  <p class="submit">
  <input type="submit" name="login" class="button" value="Hasi Saioa"  />
  </p>
- <p class="regtext">Konturik ez? <a href="Signup.html" >Erregistratu hemen!</a></p>
+ <p class="regtext">Konturik ez? <a href="signup.html" >Erregistratu hemen!</a></p>
+  <p class="regtext"><a href="berreskuratu.php" >Pasahitza ahaztu al zaizu?</a></p>
 </form>
  
 </div>

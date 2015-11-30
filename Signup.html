@@ -18,9 +18,51 @@ alert(sAux)
 
 <script type="text/javascript">
 
+			
+function konprobatuEmaila(){
+	
+	eskaera = new XMLHttpRequest();
+	
+	var frm=document.getElementById("erregistro");
+	var email = frm.elements[1].value;
+		
+		eskaera.open("GET","soapBezEgiaztatuMatrikulaAJAX.php?email="+email,true); 
+		eskaera.send(null);	
+		
+		eskaera.onreadystatechange = function(){
+			
+				if((eskaera.readyState == 4) && (eskaera.status == 200)){
+					document.getElementById('emailErantzun').innerHTML = eskaera.responseText;
+				}
+					
+			}
+							
+		}
+			
+function konprobatuPass(){				
+	eskaera1 = new XMLHttpRequest();
+	var pass = document.getElementById('password').value;
+	var pass2 = document.getElementById('password2').value;
+					
+		eskaera1.open("GET","soapBezEgiaztatuPasahitzaAJAX.php?password="+pass+"&password2="+pass2,true); 
+		eskaera1.send(null);
+					
+		eskaera1.onreadystatechange = function(){
+		if((eskaera1.readyState == 4) && (eskaera1.status == 200)){
+			document.getElementById('passErantzun').innerHTML = eskaera1.responseText;
+			}
+				
+		}
+					
+	}
+
 function konprobazioa(){
+
+if (document.getElementById('emailErantzun').innerHTML == "Email egokia." && document.getElementById('passErantzun').innerHTML == "Pasahitza baliozkoa da"){
+
 var inprimakia="";
 var frm=document.getElementById("erregistro");
+
 
 if (frm.elements[0].value === ""){ 
 	inprimakia += "Izen-abizenak eremua hutsik dago. \n";
@@ -45,7 +87,7 @@ inprimakia += "Email okerra\n";
 }
  
 	FullAdEr2 = new RegExp(/^[6-9][0-9]{8}$/);
-	var telef = frm.elements[3].value;
+	var telef = frm.elements[4].value;
 	
 if (FullAdEr2.test(telef)){
 	}
@@ -65,6 +107,11 @@ if (FullAdEr2.test(telef)){
 	}
 
 }
+else{
+
+return false;}
+}
+
 
 var loadFile = function(event) {
 	var output = document.getElementById('preview');
@@ -79,7 +126,7 @@ var loadFile = function(event) {
 <body>
 <div id="header">
 <h2>
-<a href="layout.html"> Aurkibidea </a><a href="seexmlquestions.php"> Galderak ikusi </a><a href="login.php"> Saioa hasi </a><a href="Signup.html"> Izen-ematea </a><a href="Credits.html"> Kredituak </a>
+<a href="layout.html"> Aurkibidea </a><a href="seexmlquestions.php"> Galderak ikusi </a><a href="login.php"> Saioa hasi </a><a href="signup.html"> Izen-ematea </a><a href="credits.html"> Kredituak </a>
 </h2>
 
 </div>
@@ -93,16 +140,23 @@ var loadFile = function(event) {
 <h1>Izen-ematea</h1>
 <form id="erregistro" name="erregistro" onsubmit="return konprobazioa()" action="Erregistratu.php" method="POST">
 
-<input type="text" name="name" placeholder="Izen abizenak" requiered />
+<input type="text" name="name" placeholder="Izen abizenak" />
 
 
-<input type="text" name="email" placeholder="Eposta" requiered />
+<input type="text" name="email" placeholder="Eposta" onchange="konprobatuEmaila()"  />
+
+<div id='emailErantzun'></div>
 
 
-<input type="password" name="password" placeholder="Pasahitza" requiered />
+<input type="password" id='password' name="password" placeholder="Pasahitza" onchange="konprobatuPass()"  />
+
+<div id='passErantzun'></div>
 
 
-<input type="text" name="phone" placeholder="Telefonoa" requiered/>
+<input type="password" name="password2" id='password2' placeholder="Pasahitza errepikatu" onchange="konprobatuPass()"  />
+
+
+<input type="text" name="phone" placeholder="Telefonoa" />
 
 
 <p><strong>Espezialitatea </strong><br />
@@ -161,6 +215,9 @@ var loadFile = function(event) {
 <input type="submit" name="Bidali" class="inputButton" id="Bidali" value=" Bidali " disabled/> 
 
 </form>
+
+
+
 </div>
 </div>
 </body>

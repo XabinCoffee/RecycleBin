@@ -7,10 +7,14 @@ $con = mysql_connect("localhost","root","") or die($con);
 mysql_select_db("quiz",$con); 
 
 
-if(empty($_SESSION['session_username']))
+if(empty($_SESSION['session_username'] ))
 {
     header('Location: login.php');
     exit;
+}
+else if ($_SESSION['session_username'] == "web000@ehu.es"){
+	header('Location: reviewquizzes.php');
+	exit;
 }
 
 
@@ -35,8 +39,10 @@ $data = $xml->assessmentItem;
 <script type="text/javascript" language="javascript">
 
 function galdIkus(){
+	
 	xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET","galdIkus.php",true);
+	
+	xmlhttp.open("GET","galdikus.php",true);
     xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 document.getElementById("galdIkus").innerHTML = xmlhttp.responseText;
@@ -57,7 +63,7 @@ function galdIkus(){
 
 function galdGehi(){
 	xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET","galdGehi.php",true);
+	xmlhttp.open("GET","galdgehi.php",true);
 	xmlhttp.send(null);
     xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -146,7 +152,7 @@ else{
  
  <div id="header">
 <h2>
-<a href="layoutErab.html"> Aurkibidea </a><a href="handlingquizzes.php"> Galderak kudeatu </a><a href="CreditsErab.html"> Kredituak </a><a href="logout.php"> Irten </a>
+<a href="layouterab.html"> Aurkibidea </a><a href="handlingquizzes.php"> Galderak kudeatu </a><a href="creditserab.html"> Kredituak </a><a href="logout.php"> Irten </a>
 </h2>
 
 </div>
