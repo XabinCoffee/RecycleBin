@@ -45,6 +45,8 @@ if($username == $dbusername && hash_equals($dbpassword, crypt($password, $dbpass
 	}
 	
  $_SESSION['session_username']=$username;
+ $_SESSION['attempt']=0;
+ $_SESSION['success']=0;
  
 /* Redirekzionatzeko logina egin ondoren */
 

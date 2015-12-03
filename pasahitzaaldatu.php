@@ -21,10 +21,17 @@ while ($row = mysql_fetch_object($result)) {
 	}
 }
 
+$password = $_GET['pasa'];
 
+$cost = 10;
+$salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+$salt = sprintf("$2a$%02d$", $cost) . $salt;
+
+// Pasahitza hasheatu sortutako salt-arekin
+$hash = crypt($password, $salt);
 
 if ($telefonoa == $tlf){
-	$sql = "UPDATE erabiltzaile SET Pasahitza='$_GET[pasa]' WHERE Eposta='$_GET[email]'";  
+	$sql = "UPDATE erabiltzaile SET Pasahitza='$hash' WHERE Eposta='$_GET[email]'";  
 
 if (!mysql_query($sql)){
 	die("Errorea: ".mysql_error());

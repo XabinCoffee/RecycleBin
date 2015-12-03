@@ -12,7 +12,7 @@ mysql_select_db("quiz",$con);
 $password = $_POST['password'];
 
 // Enkripzioaren kostua
-$cost = 10;
+$cost = 10;	
 
 // salt random bat generatu
 $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
