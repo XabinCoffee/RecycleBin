@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $email = $_GET['email'];
 $pasa = $_GET['pasa'];
 $tlf = $_GET['tlf'];
@@ -38,6 +38,9 @@ if (!mysql_query($sql)){
 	}
 
 echo "Pasahitza eguneratu da.";
+echo "<br>";
+echo "<a href='login.php'>Itzuli</a>";
+if (isset($_SESSION['saiakerak'])) $_SESSION['saiakerak']=0;
 }
 else{
 	echo "Erabiltzaile-telefono konbinazio okerra!";
