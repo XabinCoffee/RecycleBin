@@ -4,11 +4,11 @@ $email = $_GET['email'];
 $pasa = $_GET['pasa'];
 $tlf = $_GET['tlf'];
 
-//$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
-//mysql_select_db("u966022868_xabin",$con);
+$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
+mysql_select_db("u966022868_xabin",$con);
 
-$con = mysql_connect("localhost","root","") or die($con);
-mysql_select_db("quiz",$con);
+//$con = mysql_connect("localhost","root","") or die($con);
+//mysql_select_db("quiz",$con);
 
 
 
