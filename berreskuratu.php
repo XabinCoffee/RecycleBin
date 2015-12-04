@@ -37,6 +37,8 @@ function eguneratu(){
 
 <div id="page">
 
+<a href="login.php">Itzuli</a>
+
 <div class="form-style">
 
 <h1>Pasahitza eguneratu</h1>

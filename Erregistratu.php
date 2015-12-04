@@ -1,10 +1,10 @@
 <?php  
 //konexioa egin datubasearekin
-//$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
-//mysql_select_db("u966022868_xabin",$con);
+$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
+mysql_select_db("u966022868_xabin",$con);
 
-$con = mysql_connect("localhost","root","") or die($con);
-mysql_select_db("quiz",$con);
+//$con = mysql_connect("localhost","root","") or die($con);
+//mysql_select_db("quiz",$con);
 	
 	
 	
@@ -12,7 +12,7 @@ mysql_select_db("quiz",$con);
 $password = $_POST['password'];
 
 // Enkripzioaren kostua
-$cost = 10;
+$cost = 10;	
 
 // salt random bat generatu
 $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
@@ -35,7 +35,7 @@ if (!mysql_query($sql)){
 
 echo "1 line written";
  
-header('Location: login.php');
+header('location: login.php');
 
 // Konexioa ixteko
 mysql_close ($con);

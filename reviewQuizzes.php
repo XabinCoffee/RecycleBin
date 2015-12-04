@@ -21,9 +21,9 @@ function editatu(a){
 	eskaera.open('GET','galderaeditatu.php?id='+a,true);
 	eskaera.send(null);
 	
-	 xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("page").innerHTML = xmlhttp.responseText;
+	 eskaera.onreadystatechange = function() {
+            if (eskaera.readyState == 4 && eskaera.status == 200) {
+                document.getElementById(a).innerHTML = eskaera.responseText;
 				
             }
         }

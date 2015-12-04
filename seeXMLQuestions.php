@@ -1,8 +1,13 @@
 <?php
+session_start();
 $get = file_get_contents('galderak.xml');
 $xml = simplexml_load_string($get);
 $data = $xml->assessmentItem;
-
+if (!isset($_SESSION['attempt']) && !isset($_SESSION['success'])){
+	$_SESSION['attempt']=0;
+	$_SESSION['success']=0;
+}
+ 
  ?>
  <head>
  
@@ -19,7 +24,24 @@ function konprobatu(a){
 	eskaera.onreadystatechange = function(){
 			
 					if((eskaera.readyState == 4) && (eskaera.status == 200)){
+
 						document.getElementById('div'+a).innerHTML = eskaera.responseText;
+						getSuccess();
+					}
+					
+			}
+							
+	}
+	
+function getSuccess(){
+	eskaera = new XMLHttpRequest();
+	eskaera.open('GET','getsuccess.php', true);
+	eskaera.send()
+	
+	eskaera.onreadystatechange = function(){
+			
+					if((eskaera.readyState == 4) && (eskaera.status == 200)){
+						document.getElementById('kont').innerHTML = eskaera.responseText;
 					}
 					
 			}
@@ -46,6 +68,8 @@ function konprobatu(a){
 </div>
  
   <div id="page">
+  
+  <div id="kont"></div>
  
   
  <table class="taula"> 
