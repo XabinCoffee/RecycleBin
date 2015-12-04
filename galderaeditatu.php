@@ -20,7 +20,7 @@ foreach ($data as $row){
 
 <input type='text' id='erantzuna".$id."' name='erantzuna' value=". $row->correctResponse->value ." />
 
-<input type='text' id='konplexutasuna".$id"' name='konplexutasuna' value=". $row['konplexutasuna'] ." />
+<input type='text' id='konplexutasuna".$id."' name='konplexutasuna' value=". $row['konplexutasuna'] ." />
 
 <input type='text' id='gaia".$id."' name='gaia' value=". $row['subject'] ." />
 
