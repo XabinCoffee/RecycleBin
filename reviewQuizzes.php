@@ -30,6 +30,28 @@ function editatu(a){
 	
 }
 
+function update(a){
+	
+	eskaera = new XMLHttpRequest();
+	
+	var galdera = document.getElementById("galdera"+a);
+	var erantzuna =document.getElementById("erantzuna"+a);
+	var konplexutasuna =document.getElementById("konplexutasuna"+a);
+	var gaia =document.getElementById("gaia"+a);
+	
+	eskaera.open('GET','galderaeguneratu.php?id='+a+"&galdera="+galdera+"&erantzuna="+erantzuna+"&konplexutasuna="+konplexutasuna+"&gaia="+gaia,true);
+	eskaera.send(null);
+	
+	 eskaera.onreadystatechange = function() {
+            if (eskaera.readyState == 4 && eskaera.status == 200) {
+                document.getElementById('page').innerHTML = eskaera.responseText;
+				
+            }
+        }
+	
+	
+}
+
 </script>
 
  <link rel="stylesheet" type="text/css" href="styles.css">

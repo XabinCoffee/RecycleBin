@@ -24,7 +24,7 @@ foreach ($data as $row){
 
 <input type='text' id='gaia".$id."' name='gaia' value=". $row['subject'] ." />
 
-<input type='button' name='eguneratu' value='Eguneratu' onClick='eguneratu(". $id .")' />";
+<input type='button' name='eguneratu' value='Eguneratu' onClick='update(". $id .")' />";
 
 	}
 	

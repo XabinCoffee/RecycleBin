@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+
+
 $get = file_get_contents('galderak.xml');
 $xml = simplexml_load_string($get);
 $data = $xml->assessmentItem;
@@ -19,7 +22,7 @@ function konprobatu(a){
 	eskaera = new XMLHttpRequest();
 	
 	eskaera.open('GET','erantzunakonprobatu.php?zenb='+a+'&erantzuna='+erantzuna, true);
-	eskaera.send()
+	eskaera.send();
 	
 	eskaera.onreadystatechange = function(){
 			
@@ -36,7 +39,7 @@ function konprobatu(a){
 function getSuccess(){
 	eskaera = new XMLHttpRequest();
 	eskaera.open('GET','getsuccess.php', true);
-	eskaera.send()
+	eskaera.send();
 	
 	eskaera.onreadystatechange = function(){
 			
@@ -46,6 +49,25 @@ function getSuccess(){
 					
 			}
 							
+	}
+	
+	function gordeGoitizena(){
+		
+		var nick = document.getElementById("goitizena").value;
+		
+		eskaera = new XMLHttpRequest();
+		eskaera.open('GET','goitizenagorde.php?a='+nick, true);
+		eskaera.send();
+		
+		eskaera.onreadystatechange = function(){
+			
+					if((eskaera.readyState == 4) && (eskaera.status == 200)){
+						document.getElementById('nick').innerHTML = eskaera.responseText;
+					}
+					
+			}
+		
+		
 	}
 	
 	
@@ -68,6 +90,20 @@ function getSuccess(){
 </div>
  
   <div id="page">
+  
+  <div id='nick'>
+  <?php
+  if (isset($_SESSION['nick'])){
+	  echo "Ongietorri, " . $_SESSION['nick'];
+
+	}
+	else {
+		echo "Goitizena: <input type='text' id='goitizena' placeholder='Nickname'>
+		<input type='button' value='Gorde' onClick='gordeGoitizena()' >";
+	}
+
+  ?>
+  </div>
   
   <div id="kont"></div>
  

@@ -52,6 +52,7 @@ function eguneratu(){
 
 <input type="button" name="Bidali" class="inputButton" id="Bidali" value=" Bidali " onClick="eguneratu()"/> 
 
+<a href="signup.html">Konturik ez? Erregistratu!</a>
 </form>
 
 <div id="mezua"></div><br><br>
