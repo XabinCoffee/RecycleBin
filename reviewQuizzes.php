@@ -34,17 +34,17 @@ function update(a){
 	
 	eskaera = new XMLHttpRequest();
 	
-	var galdera = document.getElementById("galdera"+a);
-	var erantzuna =document.getElementById("erantzuna"+a);
-	var konplexutasuna =document.getElementById("konplexutasuna"+a);
-	var gaia =document.getElementById("gaia"+a);
+	var galdera = document.getElementById("galdera"+a).value;
+	var erantzuna =document.getElementById("erantzuna"+a).value;
+	var konplexutasuna =document.getElementById("konplexutasuna"+a).value;
+	var gaia =document.getElementById("gaia"+a).value;
 	
 	eskaera.open('GET','galderaeguneratu.php?id='+a+"&galdera="+galdera+"&erantzuna="+erantzuna+"&konplexutasuna="+konplexutasuna+"&gaia="+gaia,true);
 	eskaera.send(null);
 	
 	 eskaera.onreadystatechange = function() {
             if (eskaera.readyState == 4 && eskaera.status == 200) {
-                document.getElementById('page').innerHTML = eskaera.responseText;
+                document.getElementById(a).innerHTML = eskaera.responseText;
 				
             }
         }
@@ -99,8 +99,8 @@ foreach ($data as $row){
 
 	echo 
 	"
-	<table class='taula' id = $ID onClick='editatu($ID)'> 
-	<tr>
+	<table class='taula' id = $ID> 
+	<tr onClick='editatu($ID)'>
 	<th>Galdera</th>
 	<th>Erantzuna</th>
 	<th>Konplexutasuna</th>
@@ -108,7 +108,7 @@ foreach ($data as $row){
 	</tr>
 	</thead>
 	
-	<tr>
+	<tr onClick='editatu($ID)'>
  <td> ".$galdera."</td>
  <td> ".$erantzuna."</td>
   <td> ".$zailtasuna."</td>

@@ -15,16 +15,42 @@ $i=0;
 foreach ($data as $row) {
 	
 	if($i==$id){
-			$row->addAttribute('konplexutasuna',$zailtasuna);
-			$row->addAttribute('subject',$gaia);
-			$itemBody=$row->addChild('itemBody');
-			$correctResponse=$row->addChild('correctResponse');
-			$itemBody->addChild('p',$galdera);
-			$correctResponse->addChild('value', $erantzuna);
+			$row['konplexutasuna'] = $konplexutasuna;
+			$row['subject']=$gaia;
+			$row->itemBody->p=$galdera;
+			$row->correctResponse->value=$erantzuna;
 			$xml->asXML("galderak.xml");
+			$ID=$i;
+			
+	$galdera=$row->itemBody->p;
+	$erantzuna=$row->correctResponse->value;
+	$zailtasuna=$row['konplexutasuna'];
+	$gaia=$row['subject'];
+
+
+	echo 
+	"
+	<table class='taula' id = $ID> 
+	<tr onClick='editatu($ID)'>
+	<th>Galdera</th>
+	<th>Erantzuna</th>
+	<th>Konplexutasuna</th>
+	<th>Gaia</th>
+	</tr>
+	</thead>
+	
+	<tr onClick='editatu($ID)'>
+ <td> ".$galdera."</td>
+ <td> ".$erantzuna."</td>
+  <td> ".$zailtasuna."</td>
+ <td> ".$gaia."</td>
+ </tr>
+ 
+ <br>";
 	}
 
-	echo "GRAE";
+	
+	$i++;
 	
 }
 
