@@ -1,4 +1,5 @@
 <?php  
+session_start();
 //konexioa egin datubasearekin
 $con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
 mysql_select_db("u966022868_xabin",$con);
@@ -34,6 +35,7 @@ if (!mysql_query($sql)){
 	}
 
 echo "1 line written";
+$_SESSION['saiakerak']=0;
  
 header('location: login.php');
 

@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(E_ALL ^ E_DEPRECATED);
  //$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
 //mysql_select_db("u966022868_xabin",$con);
 
@@ -28,6 +29,9 @@ if(isset($_POST["login"])){
 					$query =mysql_query("SELECT * FROM erabiltzaile WHERE Eposta='".$username."'");
 					 
 					$numrows=mysql_num_rows($query);
+					$dbusername="";
+					$dbpassword="";
+					
 					   if($numrows!=0){
 						 
 					   while($row=mysql_fetch_assoc($query)){
@@ -37,7 +41,7 @@ if(isset($_POST["login"])){
 					   
 					   }
 					 
-					if($username == $dbusername && hash_equals($dbpassword, crypt($password, $dbpassword))) {
+					if($username == $dbusername && ($dbpassword == crypt($password, $dbpassword))) {
 				   
 					  $ordua = date('H:i');
 					  $sql1="INSERT INTO konexioak (eposta, ordua) VALUES ('$username','$ordua')";
@@ -52,26 +56,20 @@ if(isset($_POST["login"])){
 
 					if ($_SESSION['session_username']=="web000@ehu.es"){
 					 header("Location: reviewquizzes.php");
-					 }
-					 
-					else header("Location: handlingquizzes.php");
+					 } else if (isset($_SESSION['session_username'])) {
+						header("Location: handlingquizzes.php");
+					} 
 
-					 } else {
-					  if (filter_var($username, FILTER_VALIDATE_EMAIL) === false){
-						$message = "Eposta helbide okerra!";
-
-					  }
-					  else{
+					 }else if (!isset($_SESSION['session_username'])){
 						$message = "Eposta / Pasahitz okerra!";
 						$_SESSION['saiakerak']++;
 						
 						}
-					  }
+					  
 				   }
 				  }
 				   else {
-					$message = "Gelaxka guztiak bete!";
-					
+					$message = "Gelaxka guztiak bete!!";					
 				  }
 
 }
