@@ -7,12 +7,12 @@ if ($_SESSION['session_username'] != "web000@ehu.es"){
 }
 
 //Konexioa sortu datubasearekin
-$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
-mysql_select_db("u966022868_xabin",$con);
+//$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
+//mysql_select_db("u966022868_xabin",$con);
 
 //Probak lokalki egiteko
-//$con = mysql_connect("localhost","root","") or die($con);
-//mysql_select_db("quiz",$con);
+$con = mysql_connect("localhost","root","") or die($con);
+mysql_select_db("quiz",$con);
 
 ?>
 
@@ -39,6 +39,7 @@ mysql_select_db("u966022868_xabin",$con);
  <th>Telefonoa</th>
  <th>Espezialitatea</th>
  <th>Interesak</th>
+ <th>Argazkia</th>
  </tr>
  </thead>
 
@@ -60,7 +61,8 @@ while ($i < $lerrokop){
 	$tlf=mysql_result($erabguztiak,$i,"Telefonoa");
 	$esp=mysql_result($erabguztiak,$i,"Espezialitatea");
 	$interesak=mysql_result($erabguztiak,$i,"Interesak");
-
+	$argaz=mysql_result($erabguztiak,$i,"Argazkia");
+	$argazMota=mysql_result($erabguztiak,$i,"ArgazkiMota");
 	echo "
 	
 	<tr>
@@ -68,8 +70,10 @@ while ($i < $lerrokop){
  <td> ".$email."</td>
   <td> ".$tlf."</td>
  <td> ".$esp."</td>
- <td> ".$interesak."</td>
- </tr>";
+ <td> ".$interesak."</td>";
+ if (!is_null($argazMota)) echo '<td><img src="data:image/jpeg;base64,'.base64_encode( $argaz).'" width="100"/></td></tr>';
+	 else echo '<td>-</td></tr>';
+ 
 	$i++;
 }
 

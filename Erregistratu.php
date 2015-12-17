@@ -1,14 +1,23 @@
 <?php  
 session_start();
 //konexioa egin datubasearekin
-$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
-mysql_select_db("u966022868_xabin",$con);
+//$con = mysql_connect("mysql.hostinger.es","u966022868_xabin","xabino") or die($con);
+//mysql_select_db("u966022868_xabin",$con);
 
-//$con = mysql_connect("localhost","root","") or die($con);
-//mysql_select_db("quiz",$con);
+$con = mysql_connect("localhost","root","") or die($con);
+mysql_select_db("quiz",$con);
 	
 	
 	
+
+if($_FILES['image']['error']==0){
+	$file = $_FILES['image']['tmp_name'];
+	$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+	$image_name= addslashes($_FILES['image']['name']);
+}else{
+	$image=null;
+	$image_name="";
+}
 
 $password = $_POST['password'];
 
@@ -29,7 +38,12 @@ $salt = sprintf("$2a$%02d$", $cost) . $salt;
 $hash = crypt($password, $salt);
 	
 //Erabiltzailea txertatu
-$sql = "INSERT INTO erabiltzaile (Izena, Pasahitza, Eposta, Telefonoa, Espezialitatea, Interesak) VALUES ('$_POST[name]', '$hash' ,'$_POST[email]','$_POST[phone]', '$_POST[Espezialitatea]', '$_POST[interests]')";  
+$sql = "INSERT INTO erabiltzaile (Izena, Pasahitza, Eposta, Telefonoa, Espezialitatea, Interesak, Argazkia, ArgazkiMota) VALUES ('$_POST[name]', '$hash' ,'$_POST[email]','$_POST[phone]', '$_POST[Espezialitatea]', '$_POST[interests]','$image','$image_name')";
+
+
+
+
+
 if (!mysql_query($sql)){
 	die("Errorea: ".mysql_error());
 	}

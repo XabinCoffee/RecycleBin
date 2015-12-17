@@ -138,7 +138,7 @@ var loadFile = function(event) {
 <div class="form-style">
 
 <h1>Izen-ematea</h1>
-<form id="erregistro" name="erregistro" onsubmit="return konprobazioa()" action="erregistratu.php" method="POST">
+<form id="erregistro" name="erregistro" onsubmit="return konprobazioa()" action="erregistratu.php" enctype="multipart/form-data" method="POST">
 
 <input type="text" name="name" placeholder="Izen abizenak" />
 
@@ -192,8 +192,8 @@ var loadFile = function(event) {
 </textarea>
 
 <p>
-<input name="image" id ="imgUpload"type="file" accept="image/*" onchange="loadFile(event)"><br><br>
-<img id="preview"/><br>
+<input name="image" id ="image" type="file" accept="image/*" onchange="loadFile(event)"><br><br>
+<img width="300" id="preview"/><br>
 </p>
 
 <!--
